@@ -1,31 +1,20 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import MessagesList from '../MessagesList/MessagesList';
-import NewMessage from '../NewMessage/NewMessage';
 
 function App () {
   useEffect( ()=>{
-    fetchMessages();
+    startUp();
   }, [] );
   
-  const [ messages, setMessages ] = useState( [] );
+  const [ hook, setHook ] = useState( null );
 
-  function fetchMessages(){
-    axios.get( '/api/messages' ).then( function( response ){
-      console.log( 'back from GET:', response.data );
-      setMessages( response.data );
-    }).catch( function ( err ){
-      console.log( err );
-      alert( 'error getting messages' );
-    })
+  function startUp(){
+    console.log( 'app loaded' );
   }
 
   return (
     <div>
-      <h1>North Cascades Messages</h1>
-      <NewMessage fetchMessages={ fetchMessages }/>
-      <MessagesList messages={ messages }/>
-
+      <h1>React Base</h1>
     </div>
   );
 
